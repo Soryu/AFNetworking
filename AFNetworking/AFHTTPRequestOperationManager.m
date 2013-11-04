@@ -67,7 +67,9 @@
         self.reachabilityManager = [AFNetworkReachabilityManager sharedManager];
     }
 
-    [self.reachabilityManager startMonitoring];
+    // NOTE Stan changed so this can be called on main thread. SCNetworkReachabilityGetFlags is blocking!
+    // see https://github.com/AFNetworking/AFNetworking/commit/4bae4335c25533b5a11d7c8765b6d8a14d24974a#commitcomment-4504278
+    // [self.reachabilityManager startMonitoring];
 
     self.operationQueue = [[NSOperationQueue alloc] init];
 
